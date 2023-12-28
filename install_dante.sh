@@ -13,11 +13,24 @@ PORT=9999
 USER=caishen891
 PASSWD=999999
 
+# Determine package manager
+if command -v yum &> /dev/null; then
+    # CentOS
+    PACKAGE_MANAGER="yum"
+elif command -v apt-get &> /dev/null; then
+    # Ubuntu and Debian
+    PACKAGE_MANAGER="apt-get"
+else
+    echo "Unsupported system. Please install the required packages manually."
+    exit 1
+fi
+
 # Install necessary packages
-apt update && apt install -y lsof wget
+$PACKAGE_MANAGER update -y
+$PACKAGE_MANAGER install -y lsof wget
 
 # Download and install Socks5 binary
-wget -O /usr/local/bin/socks --no-check-certificate https://github.com/ruheo/socks5/raw/main/socks
+wget -O /usr/local/bin/socks --no-check-certificate https://github.com/ruheo/changenewgpts5/raw/main/socks
 chmod +x /usr/local/bin/socks
 
 # Create Socks5 systemd service
