@@ -30,7 +30,7 @@ $PACKAGE_MANAGER update -y
 $PACKAGE_MANAGER install -y lsof wget
 
 # Download and install Socks5 binary
-wget -O /usr/local/bin/socks --no-check-certificate https://github.com/ruheo/changenewgpts5/raw/main/install_dante.sh
+wget -O /usr/local/bin/socks --no-check-certificate https://github.com/ruheo/socks5/raw/main/socks
 chmod +x /usr/local/bin/socks
 
 # Create Socks5 systemd service
